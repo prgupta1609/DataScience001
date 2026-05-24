@@ -65,6 +65,3 @@ week3_PriyaGupta.ipynb
 
 Run all cells from top to bottom.
 
-## Author
-
-Priya Gupta
