@@ -49,7 +49,7 @@ CIFAR-10 contains 60,000 color images of size 32x32 from 10 classes:
 ## Files
 
 - `week4_PriyaGupta.ipynb` - Main notebook
-- `requirements_week4.txt` - Required libraries for Week 4
+- `requirements.txt` - Required libraries for Week 4
 - `README.md` - Project documentation
 
 ## How to Run
