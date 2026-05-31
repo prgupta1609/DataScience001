@@ -49,7 +49,7 @@ CIFAR-10 contains 60,000 color images of size 32x32 from 10 classes:
 ## Files
 
 - `week4_PriyaGupta.ipynb` - Main notebook
-- `requirements_week4.txt` - Required libraries for Week 4
+- `requirements.txt` - Required libraries for Week 4
 - `README.md` - Project documentation
 
 ## How to Run
@@ -57,7 +57,7 @@ CIFAR-10 contains 60,000 color images of size 32x32 from 10 classes:
 Install dependencies:
 
 ```bash
-pip install -r requirements_week4.txt
+pip install -r requirements.txt
 ```
 
 Then open the notebook and run all cells.
@@ -68,6 +68,3 @@ For best performance, run the notebook on Google Colab with GPU enabled.
 
 If TensorFlow installation gives issues on local Python, use Google Colab because it already supports TensorFlow and GPU acceleration.
 
-## Author
-
-Priya Gupta
