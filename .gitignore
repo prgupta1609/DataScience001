@@ -16,3 +16,19 @@ __pycache__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Ignore the MNIST raw PNG image datasets
+Week 6/data/
+data/
+**/data/
+mnist_png/
+
+# Ignore Python environment and Jupyter notebooks checkpoints
+.venv/
+.ipynb_checkpoints/
+__pycache__/
+
+# Ignore any loose binary or image files
+*.png
+*.jpg
+*.jpeg
