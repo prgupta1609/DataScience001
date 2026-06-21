@@ -1,32 +1,81 @@
-An advanced deep learning project that implements a **Fully Convolutional Denoising Autoencoder (DAE)** to eliminate synthetic Gaussian noise from handwritten digits using the MNIST dataset. The network passes corrupted inputs through a tight dimensional bottleneck layer, forcing convolutional kernels to learn robust latent representations rather than an identity mapping.
+# Week 6: Denoising Autoencoder on MNIST
+
+## Objective
+
+The objective of this assignment is to build a Deep Learning model capable of removing noise from handwritten digit images using a Denoising Autoencoder. The model is trained on noisy MNIST images and learns to reconstruct the original clean images.
 
 ---
 
-## 📂 Project Structure
+## Dataset
 
-```text
-DataScience001/
-└── Week 6/
-    ├── data/
-    │   └── mnist_png/
-    │       ├── testing/            # 10,000 test images organized into 0-9 subfolders
-    │       └── training/           # 60,000 train images organized into 0-9 subfolders
-    ├── week6_PriyaGupta.ipynb      
-    ├── requirements.txt            
-    └── README.md                   
+* Dataset: MNIST Handwritten Digits
+* Training Images: 60,000
+* Testing Images: 10,000
+* Image Size: 28 × 28 pixels
+* Total Classes: 10 digits (0–9)
 
-🛠️ Technical Stack & Dependencies
-This framework is built natively on Python 3.13. Dependencies are specified below:
+---
 
-Core Engine: tensorflow>=2.10.0
+## Steps Performed
 
-Computer Vision Processing: opencv-python>=4.5.5
+### 1. Data Loading and Preprocessing
 
-Numerical Computing: numpy>=1.22.0
+* Loaded MNIST dataset.
+* Normalized pixel values to the range [0,1].
+* Reshaped images for neural network processing.
 
-Plotting & Metrics visualization: matplotlib>=3.5.0
+### 2. Noise Generation
 
-🧠 Model Architecture & Pipeline Design
-The system implements a perfectly symmetric encoder-decoder feature matching map:1. The Encoder NetworkTranslates structural inputs downwards to filter out random ambient signal variances:Input Layer: (None, 28, 28, 1) raw normalized pixel array.Feature Maps: Two consecutive blocks of Conv2D layers ($32$ filters, $3\times3$ kernels, ReLU activation) coupled with MaxPooling2D windows ($2\times2$, padding same).Latent Bottleneck Space: Compresses the pixel grid into a highly dense (None, 7, 7, 32) information matrix.
+* Added Gaussian noise to training and testing images.
+* Clipped pixel values to keep them within valid range.
 
-🔍 Key Insights and Practical ChallengesInformation Bottleneck Function: Because random environmental distortion features lack unified spatial dependency, they are filtered out at the tight $(7,7,32)$ latent bottleneck layer.Loss Gradients: binary_crossentropy consistently outperformed standard Mean Squared Error (MSE) in tracking clear digit definitions on normalized grayscale maps.Reconstruction Limits: A minimal amount of structural softening is visible around complex loops. This trade-off is an expected limitation of an information bottleneck, where the global geometric envelope takes priority over pixel-perfect sharpness.
+### 3. Denoising Autoencoder Construction
+
+The autoencoder consists of:
+
+#### Encoder
+
+* Input Layer
+* Dense Layer (128 neurons, ReLU)
+* Dense Layer (64 neurons, ReLU)
+
+#### Decoder
+
+* Dense Layer (128 neurons, ReLU)
+* Output Layer (784 neurons, Sigmoid)
+
+### 4. Model Training
+
+* Loss Function: Binary Crossentropy
+* Optimizer: Adam
+* Epochs: 20
+* Batch Size: 256
+
+### 5. Image Reconstruction
+
+* Noisy test images were provided as input.
+* The trained autoencoder generated denoised versions of the images.
+
+---
+
+## Results and Observations
+
+* The model successfully removed a significant amount of noise from handwritten digits.
+* Reconstructed images preserved the overall digit structure.
+* Some fine details were slightly blurred due to compression in the latent representation.
+* Increasing training epochs improved reconstruction quality.
+* The autoencoder learned meaningful image representations without using class labels.
+
+---
+
+## Conclusion
+
+A Denoising Autoencoder was successfully implemented on the MNIST dataset. The model learned to reconstruct clean digit images from noisy inputs and demonstrated the effectiveness of unsupervised feature learning. The experiment highlights how autoencoders can be used for image restoration and noise reduction tasks.
+
+---
+
+
+
+
+
+
